@@ -18,7 +18,7 @@ int main()
 	Show_array(Dynamic_array, size);
 	Fill_array(Dynamic_array2, size);
 	Show_array(Dynamic_array2, size);
-	Add_element_any_in_array(Dynamic_array, size,7,154);
+	Delete_element_any_in_array(Dynamic_array, size, 7);
 	Show_array(Dynamic_array, size);
 	delete[] Dynamic_array; 	delete[] Dynamic_array2;
 	Dynamic_array = nullptr; 	Dynamic_array2 = nullptr;
@@ -124,7 +124,16 @@ void Delete_element_any_in_array(int*& arr, int& size,const int place)
 	{
 		buffer[i] = arr[i];
 	}
+	for (int i = place+1; i < size+1; i++)
+	{
+		buffer[i-1] = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+	buffer = nullptr;
 }
+
+
 void Rewrite_element_end_array() {}
 void Rewrite_element_begin_array(){}
 void Rewrite_element_any_array(){}
